@@ -1,5 +1,5 @@
 import 'dart:convert';
-// import 'dart:developer';
+
 import 'dart:async';
 import 'dart:math';
 
@@ -32,8 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _pageController = PageController(initialPage: 1);
-  final NotchBottomBarController _controller = NotchBottomBarController(index: 1);
+  final _pageController = PageController(initialPage: 4);
+  final NotchBottomBarController _controller = NotchBottomBarController(index: 4);
 
   int maxCount = 5;
 
@@ -356,9 +356,11 @@ class _AddItemDialogState extends State<AddItemDialog> {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 171, 42, 218), // Light purple color
-          borderRadius: BorderRadius.circular(20),
-        ),
+  color: Colors.purple.shade900.withOpacity(0.1), // shade900 yoki boshqa shade ishlatish mumkin
+  borderRadius: BorderRadius.circular(20),
+),
+
+        
         padding: EdgeInsets.all(20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -597,31 +599,31 @@ class _MemoryGameState extends State<MemoryGame> {
   List<bool> visible = [];
   List<String> images = [];
   final List<String> imageUrls = [
-    'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg',
-    'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg',
-    'https://images.pexels.com/photos/247932/pexels-photo-247932.jpeg',
-    'https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg',
-    'https://images.pexels.com/photos/126407/pexels-photo-126407.jpeg',
-    'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg',
-    'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg',
-    'https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg',
-    'https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg',
-    'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg',
-    'https://images.pexels.com/photos/129634/pexels-photo-129634.jpeg',
-    'https://images.pexels.com/photos/34950/pexels-photo.jpg',
-    'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg',
-    'https://images.pexels.com/photos/458805/pexels-photo-458805.jpeg',
-    'https://images.pexels.com/photos/40797/winter-nature-season-trees-40797.jpeg',
-    'https://images.pexels.com/photos/163762/sunrise-sky-orange-clouds-163762.jpeg',
-    'https://images.pexels.com/photos/912110/pexels-photo-912110.jpeg',
-    'https://images.pexels.com/photos/69841/spring-tree-flowers-meadow-69841.jpeg',
-    'https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg',
-    'https://images.pexels.com/photos/1168940/pexels-photo-1168940.jpeg',
-    'https://images.pexels.com/photos/276421/pexels-photo-276421.jpeg',
-    'https://images.pexels.com/photos/227675/pexels-photo-227675.jpeg',
-    'https://images.pexels.com/photos/1486973/pexels-photo-1486973.jpeg',
-    'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg',
-    'https://images.pexels.com/photos/1142950/pexels-photo-1142950.jpeg',
+    'rasm/q.webp',
+    'rasm/q1jpg.',
+    'rasm/q2.jpg.',
+    'rasm/q3.jpg',
+    'rasm/q4.jpg',
+    'rasm/q5.jpg',
+    'rasm/q6.jpg',
+    'rasm/q7.webp',
+    'rasm/q8.webp',
+    'rasm/q9.jpg',
+    'rasm/q10.jpg',
+    'rasm/q10.jpg',
+    'rasm/q9.jgp',
+    'rasm/q8.webp',
+    'rasm/q7.webp',
+    'rasm/q6.jpg',
+    'rasm/q5.jpg',
+    'rasm/q4.jpg',
+    'rasm/q3.jpg',
+    'rasm/q2.jpg',
+    'rasm/q1.jpg',
+    'rasm/q.webp',
+    'rasm/q10.jpg',
+    'rasm/q8.webp',
+    'rasm/q2.jpg',
   ];
 
   @override
@@ -647,7 +649,23 @@ class _MemoryGameState extends State<MemoryGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 37, 21, 216),
+        title: Text(
+          '1989',
+          style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: IconButton(
+              onPressed: resetGame, // Shuffle and reset the game
+              icon: Icon(Icons.refresh, size: 30),
+            ),
+          )
+        ],
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 50),
@@ -664,7 +682,7 @@ class _MemoryGameState extends State<MemoryGame> {
                 child: Container(
                   color: Colors.grey,
                   child: visible[index]
-                      ? Image.network(
+                      ? Image.asset(
                           images[index], // Display the shuffled image
                           fit: BoxFit.cover,
                         )
